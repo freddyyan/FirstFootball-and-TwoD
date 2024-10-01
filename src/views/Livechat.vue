@@ -1,7 +1,10 @@
 <template>
-
-  <ChatWindow />
-    <ChatChild />
+  <div class="wrapper">
+    <div class="wrap-chat">
+      <ChatWindow />
+      <ChatChild />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -15,5 +18,15 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.wrapper {
+  width: 100%;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+}
+
+.wrapper .wrap-chat {
+  width: 700px;
+}
 </style>
