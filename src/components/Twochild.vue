@@ -1,63 +1,66 @@
 <template>
   <!-- Live Time is Here -->
-  <div v-if="twoDeeLive">
+  <div v-if="twoDeeLive" class="wrapper">
     <div class="container">
-      <h1 class="twolive">{{ twoDeeLive.live.twod }}</h1>
-      <h6>အချိန် ( {{ twoDeeLive.live.time }} )</h6>
-      <div class="flex">
+      <div class="two-live">{{ twoDeeLive.live.twod }}</div>
+      <div class="time">Time ( {{ twoDeeLive.live.time }} )</div>
+      <hr class="solid" />
+      <div class="set-value">
         <div>
           <p>Set</p>
-          <h4>
+          <div class="number">
             {{ twoDeeLive.live.set }}
-          </h4>
+          </div>
         </div>
 
         <div>
           <p>Value</p>
-          <h4>
+          <div class="number">
             {{ twoDeeLive.live.value }}
-          </h4>
+          </div>
         </div>
       </div>
     </div>
     <!-- 12-00 Time  is Here-->
     <div class="container">
-      <h3>{{ twoDeeLive.result[1].twod }}</h3>
-      <h5>မနက် - {{ twoDeeLive.result[1].open_time }}</h5>
-      <div class="flex">
+      <div class="two-live">{{ twoDeeLive.result[1].twod }}</div>
+      <div class="time">Morning - {{ twoDeeLive.result[1].open_time }}</div>
+      <hr class="solid" />
+      <div class="set-value">
         <div>
           <p>Set</p>
-          <h2>
+          <div class="number">
             {{ twoDeeLive.result[1].set }}
-          </h2>
+          </div>
         </div>
 
         <div>
           <p>Value</p>
-          <h2>
+          <div class="number">
             {{ twoDeeLive.result[1].value }}
-          </h2>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- 4-30 Time is Here -->
     <div class="container">
-      <h3>{{ twoDeeLive.result[3].twod }}</h3>
-      <h5>ညနေ - {{ twoDeeLive.result[3].open_time }}</h5>
-      <div class="flex">
+      <div class="two-live">{{ twoDeeLive.result[3].twod }}</div>
+      <div class="time">Evening - {{ twoDeeLive.result[3].open_time }}</div>
+      <hr class="solid" />
+      <div class="set-value">
         <div>
           <p>Set</p>
-          <h2>
+          <div class="number">
             {{ twoDeeLive.result[3].set }}
-          </h2>
+          </div>
         </div>
 
         <div>
           <p>Value</p>
-          <h2>
+          <div class="number">
             {{ twoDeeLive.result[3].value }}
-          </h2>
+          </div>
         </div>
       </div>
     </div>
@@ -87,5 +90,62 @@ export default {
 };
 </script>
 
-<style>
+<style lang="css" scoped>
+.wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 10px;
+  color: #fff;
+}
+.wrapper .container {
+  margin-bottom: 10px;
+  background: rgb(60, 115, 250);
+  background: linear-gradient(
+    90deg,
+    rgba(60, 115, 250, 1) 0%,
+    rgba(60, 115, 250, 1) 100%
+  );
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  padding-bottom: 16px;
+}
+
+.wrapper .container .two-live {
+  font-size: 20px;
+  font-weight: bold;
+  padding: 20px;
+}
+.wrapper .container .solid {
+  border-top: 1px solid #eee;
+}
+.wrapper .container .set-value {
+  display: flex;
+  justify-content: space-around;
+}
+.wrapper .container .set-value .number {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.wrapper .container .two-live {
+  animation: Key 1s ease-in-out infinite;
+}
+
+@keyframes Key {
+  from {
+    transform: translate(0%);
+  }
+  to {
+    transform: translate(-5%, 5%);
+  }
+}
+
+.wrapper .container-2 {
+  background: pink;
+}
+
+/* line number 6 is အချိန်  */
+/* line number 26 is မနက် */
+/* line number 47 is ညနေ */
 </style>

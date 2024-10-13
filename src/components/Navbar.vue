@@ -1,18 +1,17 @@
-
 <template>
   <div class="contener">
     <div class="group">
-      <p class="text">
+      <!-- <p class="text">
         မင်္ဂလာပါ ။ အွန်လိုင်းမှာ ယုံကြည်စိတ်ချရပြီး ဘောနက် လည်းနေ့စဥ်ပေးနေသော
         အေးဂျင့်ကို ရှာနေတယ်ဆိုရင် သတိရလိုက်ပါနော် ။
-      </p>
+      </p> -->
     </div>
   </div>
   <header>
-    <router-link to="/"> 2D Live</router-link> ||
+    <!-- <router-link to="/"> 2D Live</router-link> ||
     <router-link to="/livechat">Chat</router-link> ||
     <router-link to="/football"> Football</router-link> ||
-    <router-link to="/highlights">Highlights</router-link>
+    <router-link to="/highlights">Highlights</router-link> -->
   </header>
 </template>
 
