@@ -109,16 +109,6 @@ export default {
   line-height: 1.5;
 }
 
-.single:before {
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: -10px;
-  border-width: 10px;
-  border-style: solid;
-  border-color: transparent #e1f5fe transparent transparent;
-}
-
 .message {
   display: block;
   margin-bottom: 4px;

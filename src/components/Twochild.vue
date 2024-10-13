@@ -1,9 +1,9 @@
 <template>
   <!-- Live Time is Here -->
   <div v-if="twoDeeLive" class="wrapper">
-    <div class="container">
+    <div class="container" :class="{ animated: isAnimated }">
       <div class="two-live">{{ twoDeeLive.live.twod }}</div>
-      <div class="time">Time ( {{ twoDeeLive.live.time }} )</div>
+      <div class="time">အချိန် ( {{ twoDeeLive.live.time }} )</div>
       <hr class="solid" />
       <div class="set-value">
         <div>
@@ -24,7 +24,7 @@
     <!-- 12-00 Time  is Here-->
     <div class="container">
       <div class="two-live">{{ twoDeeLive.result[1].twod }}</div>
-      <div class="time">Morning - {{ twoDeeLive.result[1].open_time }}</div>
+      <div class="time">မနက် - {{ twoDeeLive.result[1].open_time }}</div>
       <hr class="solid" />
       <div class="set-value">
         <div>
@@ -46,7 +46,7 @@
     <!-- 4-30 Time is Here -->
     <div class="container">
       <div class="two-live">{{ twoDeeLive.result[3].twod }}</div>
-      <div class="time">Evening - {{ twoDeeLive.result[3].open_time }}</div>
+      <div class="time">ညနေ - {{ twoDeeLive.result[3].open_time }}</div>
       <hr class="solid" />
       <div class="set-value">
         <div>
@@ -72,20 +72,47 @@ import { ref } from "vue";
 export default {
   setup() {
     let twoDeeLive = ref("");
+    let previousLiveData = ref(null); // Store the previous API data
+    let isAnimated = ref(false);
     let error = ref("");
-    let show = true;
+    let timeout = null;
 
     let load = async () => {
       try {
         let response = await fetch("https://api.thaistock2d.com/live");
         let datas = await response.json();
+
+        // Compare with the previous data
+        if (
+          JSON.stringify(datas.live) !== JSON.stringify(previousLiveData.value)
+        ) {
+          // Data has changed, start the animation
+          isAnimated.value = true;
+
+          // Clear previous timeout and set a new one for 3 minutes (180000ms)
+          if (timeout) clearTimeout(timeout);
+          timeout = setTimeout(() => {
+            isAnimated.value = false;
+          }, 180000); // 3 minutes
+        }
+
+        // Update the previous live data for comparison
+        previousLiveData.value = datas.live;
         twoDeeLive.value = datas;
       } catch (err) {
         error.value = err.message;
       }
     };
+
+    // Load data initially
     load();
-    return { twoDeeLive, error, show };
+
+    // Optionally, you can set an interval to recheck the data periodically
+    setInterval(() => {
+      load();
+    }, 30000); // Fetch data every 30 seconds
+
+    return { twoDeeLive, error, isAnimated };
   },
 };
 </script>
@@ -111,6 +138,11 @@ export default {
   padding-bottom: 16px;
 }
 
+/* Add a new class for animation */
+.wrapper .container.animated .two-live {
+  animation: Key 1s ease-in-out infinite;
+}
+
 .wrapper .container .two-live {
   font-size: 20px;
   font-weight: bold;
@@ -128,10 +160,6 @@ export default {
   font-weight: bold;
 }
 
-.wrapper .container .two-live {
-  animation: Key 1s ease-in-out infinite;
-}
-
 @keyframes Key {
   from {
     transform: translate(0%);
@@ -140,12 +168,4 @@ export default {
     transform: translate(-5%, 5%);
   }
 }
-
-.wrapper .container-2 {
-  background: pink;
-}
-
-/* line number 6 is အချိန်  */
-/* line number 26 is မနက် */
-/* line number 47 is ညနေ */
 </style>
