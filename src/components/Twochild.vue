@@ -3,19 +3,18 @@
   <div v-if="twoDeeLive" class="wrapper">
     <div class="container" :class="{ animated: isAnimated }">
       <div class="two-live">{{ twoDeeLive.live.twod }}</div>
-      <div class="time">အချိန် ( {{ twoDeeLive.live.time }} )</div>
-      <hr class="solid" />
+      <div class="time"> ထွက်မည့်အချိန် ( {{ twoDeeLive.live.time }} )</div>
       <div class="set-value">
         <div>
           <p>Set</p>
-          <div class="number">
+          <div class="numbers">
             {{ twoDeeLive.live.set }}
           </div>
         </div>
 
         <div>
           <p>Value</p>
-          <div class="number">
+          <div class="numbers">
             {{ twoDeeLive.live.value }}
           </div>
         </div>
@@ -23,8 +22,8 @@
     </div>
     <!-- 12-00 Time  is Here-->
     <div class="container">
-      <div class="two-live">{{ twoDeeLive.result[1].twod }}</div>
-      <div class="time">မနက် - {{ twoDeeLive.result[1].open_time }}</div>
+     
+      <div class="time-love">မနက် ( {{ twoDeeLive.result[1].open_time }} )</div>
       <hr class="solid" />
       <div class="set-value">
         <div>
@@ -40,13 +39,17 @@
             {{ twoDeeLive.result[1].value }}
           </div>
         </div>
+        <div>
+          <p>2D</p>
+           <div class="numbering">{{ twoDeeLive.result[1].twod }}</div>
+        </div>
       </div>
     </div>
 
     <!-- 4-30 Time is Here -->
     <div class="container">
-      <div class="two-live">{{ twoDeeLive.result[3].twod }}</div>
-      <div class="time">ညနေ - {{ twoDeeLive.result[3].open_time }}</div>
+  
+      <div class="time-love"> ညနေ (  {{ twoDeeLive.result[3].open_time }} )</div>
       <hr class="solid" />
       <div class="set-value">
         <div>
@@ -62,10 +65,31 @@
             {{ twoDeeLive.result[3].value }}
           </div>
         </div>
+           <div>
+            <p>2D</p>
+             <div class="numbering">{{ twoDeeLive.result[3].twod }}</div>
+           </div>
       </div>
     </div>
+
+
+    <footer>
+    <a href="viber://chat/?number=959956113143">Viber</a>
+    <a href="http://t.me/triple3agent">Telegram</a>
+    <a href="tel:09956113143">Hotline</a>
+  </footer>
+   <h6>
+    မိတ်ဆွေရဲ့ ယုံကြည်စိတ်ချစွာ ရွေးချယ်ခြင်းအတွက် 5000 <br>
+    ကျပ်မှ စပြီး စမ်းသပ်လေ့လာနိုင်ပါတယ် ။ <br>
+    ၃ မိနစ်အတွင်း အမြန်ဆုံး အကောင်းဆုံး ဝန်ဆောင်မှုအတွက် <br>
+    Viber & Telegram & Hotline တို့မှ ဆက်သွယ်နိုင်ပါကြောင်း ။ 
+  </h6>
   </div>
+
+
+
 </template>
+ 
 
 <script>
 import { ref } from "vue";
@@ -110,7 +134,7 @@ export default {
     // Optionally, you can set an interval to recheck the data periodically
     setInterval(() => {
       load();
-    }, 30000); // Fetch data every 30 seconds
+    }, 2000); // Fetch data every 3 seconds
 
     return { twoDeeLive, error, isAnimated };
   },
@@ -119,45 +143,76 @@ export default {
 
 <style lang="css" scoped>
 .wrapper {
-  max-width: 500px;
-  margin: 0 auto;
+  max-width: 700px;
+  margin: 25px auto 5px;
   border-radius: 10px;
-  color: #fff;
+  color: #ffffff;
+  max-height: 84vh;
+  margin-bottom: 5px;
 }
 .wrapper .container {
-  margin-bottom: 10px;
-  background: rgb(60, 115, 250);
-  background: linear-gradient(
-    90deg,
-    rgba(60, 115, 250, 1) 0%,
-    rgba(60, 115, 250, 1) 100%
-  );
+  margin-bottom: 7px;
+  background: #cd362b;
   border-radius: 10px;
-  padding: 10px;
+  padding: 5px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  padding-bottom: 16px;
+  padding-bottom: auto;
 }
 
 /* Add a new class for animation */
 .wrapper .container.animated .two-live {
-  animation: Key 1s ease-in-out infinite;
+  animation: Key 1s ease infinite;
 }
 
 .wrapper .container .two-live {
-  font-size: 20px;
+  font-size: 110px;
   font-weight: bold;
-  padding: 20px;
+  color: rgb(3, 165, 3);
+}
+.wrapper .container .numbers{
+  animation: Key 1s ease-in-out infinite;
+  color:rgb(2, 21, 68);
+  font-size: 25px;
+  font-weight: bold;
 }
 .wrapper .container .solid {
-  border-top: 1px solid #eee;
+  border-top: 1px solid #eeeeee;
 }
 .wrapper .container .set-value {
   display: flex;
   justify-content: space-around;
+  text-align: center;
 }
-.wrapper .container .set-value .number {
+.wrapper .container .set-value .numbers {
   font-size: 16px;
   font-weight: bold;
+  margin-bottom: 3px;
+}
+.time-love{
+  font-size: 17px;
+  color: yellow;
+  font-weight: bold;
+
+}
+.time{
+  font-size: 0.8rem;
+  color: yellow;
+  font-weight: bold;
+  
+}
+.set-value,p{
+  color: rgb(251, 251, 251);
+  font-size: 17px;
+  font-weight: bold;
+}
+.numbering{
+  font-size: 21px;
+  font-weight: 800;
+  color: yellow;
+}
+.number{
+  color:rgb(2, 21, 68);
+  font-size: 17px;
 }
 
 @keyframes Key {
@@ -165,7 +220,40 @@ export default {
     transform: translate(0%);
   }
   to {
-    transform: translate(-5%, 5%);
+    transform: translate(-2%);
   }
 }
+
+
+footer {
+  display: flex;
+  justify-content: space-around;
+  background-color: transparent;
+  margin-top: 7px;
+}
+a {
+  background-color: rgb(151, 144, 144);
+  padding: 5px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  color: rgb(6, 17, 233);
+  border-bottom: 2px solid rgb(3, 183, 248);
+  border-top: 2px solid rgb(3, 183, 248);
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+h6{
+  color: rgb(0, 0, 0);
+  border-radius: 10px;
+  background-color: rgb(206, 243, 250);
+  font-weight: 100pt;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 7px;
+  padding: 5px 2px;
+  margin-bottom: 0;
+  font-size: 10px;
+}
+
 </style>

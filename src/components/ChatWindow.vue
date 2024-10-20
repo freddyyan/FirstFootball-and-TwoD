@@ -7,8 +7,9 @@
         :key="message.id"
         :class="{ user: isUserMessage(message) }"
       >
-        <span class="message">{{ message.message }}</span>
         <span class="created_at">{{ message.created_at }}</span>
+        <span class="message">{{ message.message }}</span>
+      
       </div>
     </div>
   </div>
@@ -59,16 +60,16 @@ export default {
 
 <style scoped>
 .chat-window {
-  background: #f9f9f9;
+  background: #b4a976;
   border: 1px solid #ddd;
   border-radius: 10px;
-  margin-bottom: 5px;
-  padding: 10px;
+  margin-bottom: 2px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
   align-items: start;
   height: 70vh;
-  max-height: 70vh;
+  max-height: 74vh;
   overflow: hidden;
   position: relative;
 }
@@ -76,10 +77,11 @@ export default {
 .messages {
   flex-grow: 1;
   width: 100%;
-  max-height: 65vh;
+  max-height: 73vh;
   overflow-y: auto;
-  padding: 10px;
+  padding: 5px;
   scrollbar-width: thin;
+  font-weight: bold;
   scrollbar-color: #888 #e0e0e0;
 }
 
@@ -97,28 +99,31 @@ export default {
 }
 
 .single {
-  margin: 12px 0;
-  padding: 12px 20px;
+  margin: 5px;
+  padding: 7px 15px;
   background-color: #e1f5fe;
   border-radius: 15px;
   word-wrap: break-word;
-  width: 250px;
+  width: 100%;
   text-align: left;
   max-width: 70%;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 .message {
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
+  font-weight: 700;
+  color: black;
 }
 
 .created_at {
-  display: block;
-  color: #999;
+  display: inline;
+  color: #cb0c0c;
   font-size: 12px;
   text-align: right;
+  font-weight: bold;
 }
 
 .single.user {

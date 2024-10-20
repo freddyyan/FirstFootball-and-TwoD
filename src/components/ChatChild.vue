@@ -65,7 +65,7 @@ textarea {
   border: 1px solid #ddd;
   outline: none;
   font-size: 16px;
-  margin-right: 10px;
+  margin-right: 5px;
   background-color: #fff;
 }
 

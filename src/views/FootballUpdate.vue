@@ -1,15 +1,16 @@
 <template>
-  <HighChild />
+  <FootChild />
 </template>
 
 <script>
-import HighChild from "../components/HighChild.vue";
+import FootChild from "../components/Update.vue";
 export default {
   components: {
-    HighChild,
+    FootChild,
   },
 };
 </script>
 
 <style>
+
 </style>

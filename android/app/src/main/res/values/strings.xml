@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">triple3</string>
+    <string name="title_activity_main">triple3</string>
+    <string name="package_name">this.mustb.be.a.b.yan.id.for.apple.store</string>
+    <string name="custom_url_scheme">this.mustb.be.a.b.yan.id.for.apple.store</string>
+</resources>
